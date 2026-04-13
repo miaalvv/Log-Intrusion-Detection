@@ -17,28 +17,17 @@ The system follows a modular architecture with separate components for log readi
 - `Makefile` – Commands for setup and running the project
 ## Setup Instructions
 To set up the project, run:
-To set up the project, run:
-
 ```
 make bootstrap
 ```
-
 ## Run the System
 To run the system, use:
-
 ```
 make run
 ```
-
 ## Testing
 To run tests, use:
-
 ```
 make test
 ```
 
-## Reproducibility
-This project is designed to be reproducible using a simple setup process and modular structure.
-
-## Author
-Mia
