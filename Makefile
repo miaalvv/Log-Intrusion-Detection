@@ -1,5 +1,5 @@
 up:
-	echo "Simulating docker up"
+	docker-compose up --build
 
 bootstrap:
 	echo "Setting up project"
@@ -9,7 +9,7 @@ run:
 	python src/main.py
 
 demo:
-	make run
+	docker-compose up --build --abort-on-container-exit
 
 test:
 	echo "Running tests"

@@ -43,10 +43,14 @@ pip install -r requirements.txt
 ```bash
 make up && make demo
 ```
+the container will automatically exit after processing.
+
 ### Windows (PowerShell)
 ```bash
 make up
 make demo
+```
+the container will automatically exit after processing.
 
 ## Output
 ### Terminal Output
@@ -73,8 +77,11 @@ python -m pytest
 - Threshold-based detection to reduce false positives  
 - No sensitive data stored  
 
-## Evaluation (draft)
-The system successfully detected suspicious activity from user2, who triggered 5 failed login attempts. No false positives were observed.
+## Evaluation (Draft Results)
+The system correctly detected suspicious activity:
+- user2 triggered 5 failed login attempts and was flagged
+- other users remained below the threshold
+This demonstrates correct threshold-based detection.
 
 ## What Works
 - End-to-end pipeline execution  
