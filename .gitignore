@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+artifacts/release/*.csv
+artifacts/release/*.json
+artifacts/release/*.txt

@@ -4,8 +4,10 @@ def detect_suspicious_activity(logs, threshold=5):
     failed_counts = defaultdict(int)
 
     for log in logs:
-        if log["action"] == "LOGIN_FAILED":
-            failed_counts[log["user"]] += 1
+        if log.get("action") == "LOGIN_FAILED":
+            user = log.get("user")
+            if user:
+                failed_counts[user] += 1
 
     suspicious_users = []
 
