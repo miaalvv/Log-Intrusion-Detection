@@ -3,31 +3,85 @@
 ## Project Overview
 This project is a log-based intrusion detection system that analyzes system logs to detect suspicious activity, such as repeated failed login attempts or unusual user behavior. The goal is to identify potential security threats early and provide alerts for further investigation.
 ## Features
-- Analyzes system log data
-- Detects suspicious patterns (e.g., multiple failed logins)
-- Generates alerts for potential threats
-- Modular design for easy updates and scalability
+- Analyzes system log data  
+- Detects suspicious patterns (e.g., multiple failed logins)  
+- Generates alerts for potential threats  
+- Modular design for easy updates and scalability  
+- Outputs structured results as JSON  
+- Includes automated tests for validation  
 ## System Architecture
-The system follows a modular architecture with separate components for log reading, parsing, detection, and alert generation. This allows each part of the system to be developed and tested independently.
+The system follows a modular architecture with separate components for log reading, parsing, detection, alert generation, and summarization.
+### Pipeline
+ingest → parse → detect → alert → summarize
+### Components
+- **Parser (`parser.py`)**: Reads and structures log data  
+- **Detector (`detector.py`)**: Identifies suspicious login patterns  
+- **Alert (`alert.py`)**: Generates alerts for flagged users  
+- **Summarizer (`summarizer.py`)**: Exports results to JSON  
+- **Main (`main.py`)**: Orchestrates the full pipeline  
 ## Repository Structure
 - `data/` – Contains sample log files
 - `src/` – Core system modules (log reader, parser, detector, alert)
-- `tests/` – Test files for validating system behavior
-- `docker-compose.yml` – Container setup for reproducibility
+- `tests/` – Test files for system behavior
+- `docker-compose.yml` – Container setup
 - `Makefile` – Commands for setup and running the project
+- `requirements.txt`
+- `README.md`
 ## Setup Instructions
-To set up the project, run:
-```
+
+### Using Make
+```bash
 make bootstrap
 ```
-## Run the System
-To run the system, use:
-```
-make run
-```
-## Testing
-To run tests, use:
-```
-make test
+### Manual Setup
+```bash
+pip install -r requirements.txt
 ```
 
+## Run the System
+### Mac/Linux
+```bash
+make up && make demo
+```
+### Windows (PowerShell)
+```bash
+make up
+make demo
+
+## Output
+### Terminal Output
+```
+[ALERT] User user2 has 5 failed login attempts
+```
+
+### Generated File
+```
+artifacts/release/summary.json
+```
+
+## Testing
+Run tests with:
+```bash
+python -m pytest
+
+## Observability
+- `[INFO]` → system progress  
+- `[ALERT]` → suspicious activity  
+
+## Security Considerations
+- Input validation for malformed log entries  
+- Threshold-based detection to reduce false positives  
+- No sensitive data stored  
+
+## Evaluation (draft)
+The system successfully detected suspicious activity from user2, who triggered 5 failed login attempts. No false positives were observed.
+
+## What Works
+- End-to-end pipeline execution  
+- Accurate detection of failed logins  
+- Alerts and JSON output  
+- Fully testable modular system
+## What’s Next
+- Time-based detection windows  
+- Real-time monitoring  
+- Dashboard visualization  

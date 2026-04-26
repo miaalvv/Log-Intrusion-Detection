@@ -6,7 +6,7 @@ from summarizer import save_summary
 def main():
     print("[INFO] Starting log analysis...")
 
-    logs = parse_logs("data/log.txt")
+    logs = parse_logs("data/logs.txt")
     print(f"[INFO] Parsed {len(logs)} log entries")
 
     suspicious_users = detect_suspicious_activity(logs)
