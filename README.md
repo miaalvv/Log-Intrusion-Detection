@@ -52,7 +52,7 @@ artifacts/release/summary.json
 ```
 ### Results (CSV Output)
 Below is an example of the generated CSV file:
-![Results CSV](docs/results.png)
+![Results CSV](artifacts/results.png)
 
 ## Testing
 Run tests with:
@@ -92,7 +92,6 @@ The system reliably detects brute-force login patterns. However, future improvem
 All artifacts are stored in:
 
 artifacts/release/
-
 Includes:
 - logs.txt (input logs)
 - results.csv (processed data)
