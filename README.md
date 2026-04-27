@@ -62,6 +62,9 @@ the container will automatically exit after processing.
 ```
 artifacts/release/summary.json
 ```
+### Results (CSV Output)
+Below is an example of the generated CSV file:
+![Results CSV](docs/results.png)
 
 ## Testing
 Run tests with:
