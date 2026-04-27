@@ -27,4 +27,5 @@ jobs:
 
       - name: Run full system
         run: |
-          make up && make demo
+          mkdir -p artifacts/release
+          PYTHONPATH=. python src/main.py
