@@ -1,35 +1,37 @@
-## Setup Instructions
-
-### Using Make
-```bash
-make bootstrap
-```
-### Manual Setup
-```bash
-pip install -r requirements.txt
-```
-
-## Run the System
-### Mac/Linux
-```bash
-make up && make demo
-```
-the container will automatically exit after processing.
-
-### Windows (PowerShell)
-```bash
-make up
-make demo
-```
-the container will automatically exit after processing.
-
 ## Runbook
-1. Clone the repository  
-2. Run: make demo  
-3. The system will:
-   - Parse logs
-   - Detect suspicious activity
-   - Generate alerts
-   - Output results to artifacts/release/
 
-All outputs are saved automatically.
+### Prerequisites
+- Docker Desktop installed and running
+- Python 3.10+
+- `make` installed
+
+### Fresh Clone & Run
+1. Clone the repository
+```bash
+   git clone <https://github.com/miaalvv/Log-Intrusion-Detection.git>
+   cd Log-Intrusion-Detection
+```
+2. Install dependencies
+```bash
+   pip install -r requirements.txt
+```
+3. Build and run the full system
+```bash
+   make up && make demo
+```
+   On Windows, run separately:
+```bash
+   make up
+   make demo
+```
+the container will automatically exit after processing.
+4. The system will automatically:
+   - Parse logs from `data/logs.txt`
+   - Detect suspicious login activity
+   - Generate alerts
+   - Output `artifacts/release/results.csv` and `artifacts/release/summary.json`
+
+### Tear Down
+```bash
+make down
+```
