@@ -26,7 +26,7 @@ def test_below_threshold():
     result = detect_suspicious_activity(logs, threshold=5)
     assert result == []
 
-def test_missing_action_field():
-    logs = [{"user": "user1"}]  # missing action
+def test_negative_invalid_input():
+    logs = [{"user": "user1"}]  
     result = detect_suspicious_activity(logs, threshold=5)
     assert result == []

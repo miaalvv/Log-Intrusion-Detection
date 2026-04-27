@@ -1,16 +1,8 @@
 up:
-	docker-compose up --build
-
-bootstrap:
-	echo "Setting up project"
-	pip install -r requirements.txt || true
-
-run:
-	python src/main.py
+	docker-compose build
 
 demo:
-	docker-compose up --build --abort-on-container-exit
+	docker-compose up --abort-on-container-exit
 
-test:
-	echo "Running tests"
-	python -m pytest tests/
+down:
+	docker-compose down

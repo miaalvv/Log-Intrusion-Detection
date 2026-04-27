@@ -15,11 +15,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        pip install pytest coverage
-
     - name: Run tests with coverage
       run: |
-        coverage run -m pytest
-        coverage report
+        pip install pytest coverage
+        pytest --cov=src tests/

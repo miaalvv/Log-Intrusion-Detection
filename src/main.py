@@ -64,8 +64,9 @@ def main():
         print("[INFO] No suspicious activity found")
 
     summary = {
-    "alerts": suspicious_users,
-    "metrics": metrics
+        "alerts": suspicious_users,
+        "metrics": metrics,
+        "total_logs_processed": len(logs)
     }
     print("[INFO] Saving final summary JSON")
     save_summary(summary)
