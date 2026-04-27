@@ -17,5 +17,6 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        pip install pytest coverage
+        pip install pytest pytest-cov
+        export PYTHONPATH=$PYTHONPATH:.
         pytest --cov=src tests/
