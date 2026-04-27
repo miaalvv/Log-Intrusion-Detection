@@ -1,5 +1,11 @@
 # Log-Intrusion-Detection
 
+## Documentation
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runbook](docs/RUNBOOK.md)
+- [Security Invariants](docs/SECURITY.md)
+- [What Works / What's Next](docs/WHAT_WORKS.md)
+
 ## Project Overview
 This project is a log-based intrusion detection system that analyzes system logs to detect suspicious activity, such as repeated failed login attempts or unusual user behavior. The goal is to identify potential security threats early and provide alerts for further investigation.
 ## Features
@@ -27,30 +33,12 @@ ingest → parse → detect → alert → summarize
 - `Makefile` – Commands for setup and running the project
 - `requirements.txt`
 - `README.md`
-## Setup Instructions
+- `docs` -
+            Runbook with rebuild/run instructions
+            Security invariants (e.g., plaintext never written to disk)
+            1-page summary: “What works / What’s next”
+            Demo video or GIF (≤2 minutes) showing the full vertical slice
 
-### Using Make
-```bash
-make bootstrap
-```
-### Manual Setup
-```bash
-pip install -r requirements.txt
-```
-
-## Run the System
-### Mac/Linux
-```bash
-make up && make demo
-```
-the container will automatically exit after processing.
-
-### Windows (PowerShell)
-```bash
-make up
-make demo
-```
-the container will automatically exit after processing.
 
 ## Output
 ### Terminal Output
@@ -75,48 +63,6 @@ python -m pytest
 - `[INFO]` → system progress  
 - `[ALERT]` → suspicious activity  
 
-## Security Considerations
-- Input validation for malformed log entries  
-- Threshold-based detection to reduce false positives  
-- No sensitive data stored  
-
-## Evaluation (Draft Results)
-The system correctly detected suspicious activity:
-- user2 triggered 5 failed login attempts and was flagged
-- other users remained below the threshold
-This demonstrates correct threshold-based detection.
-
-## What Works
-- End-to-end pipeline execution  
-- Accurate detection of failed logins  
-- Alerts and JSON output  
-- Fully testable modular system
-## What’s Next
-- Time-based detection windows  
-- Real-time monitoring  
-- Dashboard visualization  
-
-
-## Runbook
-
-1. Clone the repository  
-2. Run: make demo  
-3. The system will:
-   - Parse logs
-   - Detect suspicious activity
-   - Generate alerts
-   - Output results to artifacts/release/
-
-All outputs are saved automatically.
-
-
-## Security Invariants
-
-- Invalid log entries are rejected during parsing
-- Only predefined actions are accepted (LOGIN_SUCCESS, LOGIN_FAILED)
-- No sensitive data (e.g., passwords) is stored
-- All processing is done on structured, sanitized input
-
 ## Evaluation
 
 The system evaluates performance using:
@@ -124,6 +70,10 @@ The system evaluates performance using:
 - Detection Rate: measures how many attacks were correctly identified (High- correctly identifies repeated failed login attempt)
 - False Positive Rate: measures incorrect alerts (Low - minimal normal activity flagged)
 - Processing Speed: fast for small datasets
+The system correctly detected suspicious activity:
+- user2 triggered 5 failed login attempts and was flagged
+- other users remained below the threshold
+This demonstrates correct threshold-based detection.
 
 Results are exported in summary.json.
 
@@ -149,3 +99,4 @@ Includes:
 - results.png (visualization)
 - sample.pcap (network capture)
 - summary.json (final output + metrics)
+
