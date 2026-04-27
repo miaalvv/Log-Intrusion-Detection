@@ -28,5 +28,5 @@ def parse_logs(file_path):
                 "user": user,
                 "action": action
             })
-
+    print(f"[INFO] Parsed {len(logs)} valid log entries")
     return logs

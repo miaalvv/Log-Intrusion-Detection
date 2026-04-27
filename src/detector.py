@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 def detect_suspicious_activity(logs, threshold=5):
+    print("[INFO] Detecting suspicious activity...")
     failed_counts = defaultdict(int)
 
     for log in logs:
@@ -18,4 +19,7 @@ def detect_suspicious_activity(logs, threshold=5):
                 "failed_attempts": count
             })
 
+    print(f"[INFO] Detected {len(suspicious_users)} suspicious users")
+    
     return suspicious_users
+    

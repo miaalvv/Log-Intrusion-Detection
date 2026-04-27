@@ -109,25 +109,33 @@ This demonstrates correct threshold-based detection.
 
 All outputs are saved automatically.
 
+
 ## Security Invariants
 
-- Log entries are validated before processing
-- Invalid or malformed logs are ignored
-- No sensitive plaintext data is stored
-- Detection thresholds prevent brute-force login attempts
+- Invalid log entries are rejected during parsing
+- Only predefined actions are accepted (LOGIN_SUCCESS, LOGIN_FAILED)
+- No sensitive data (e.g., passwords) is stored
+- All processing is done on structured, sanitized input
 
 ## Evaluation
 
 The system evaluates performance using:
 
-- Detection Rate: measures how many attacks were correctly identified
-- False Positive Rate: measures incorrect alerts
+- Detection Rate: measures how many attacks were correctly identified (High- correctly identifies repeated failed login attempt)
+- False Positive Rate: measures incorrect alerts (Low - minimal normal activity flagged)
+- Processing Speed: fast for small datasets
 
 Results are exported in summary.json.
 
 Example:
 - Detection Rate: 1.0
 - False Positive Rate: 0.0
+
+### Observations:
+The system reliably detects brute-force login patterns. However, future improvements could include:
+- More complex attack detection
+- Larger datasets
+- Real-world log integration
 
 ## Evidence Artifacts
 
