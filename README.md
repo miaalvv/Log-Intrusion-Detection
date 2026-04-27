@@ -1,7 +1,6 @@
 # Log-Intrusion-Detection
 
 ## Documentation
-- [Architecture](docs/ARCHITECTURE.md)
 - [Runbook](docs/RUNBOOK.md)
 - [Security Invariants](docs/SECURITY.md)
 - [What Works / What's Next](docs/WHAT_WORKS.md)
