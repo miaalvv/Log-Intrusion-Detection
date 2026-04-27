@@ -17,13 +17,14 @@ This project is a log-based intrusion detection system that analyzes system logs
 ## System Architecture
 The system follows a modular architecture with separate components for log reading, parsing, detection, alert generation, and summarization.
 ### Pipeline
-ingest → parse → detect → alert → summarize
+ingest → parse → detect → alert → summarize + pcap analysis
 ### Components
 - **Parser (`parser.py`)**: Reads and structures log data  
 - **Detector (`detector.py`)**: Identifies suspicious login patterns  
 - **Alert (`alert.py`)**: Generates alerts for flagged users  
 - **Summarizer (`summarizer.py`)**: Exports results to JSON  
 - **Main (`main.py`)**: Orchestrates the full pipeline  
+- **PCAP Reader (`pcap_reader.py`)**: Loads and summarizes network capture file, appends packet count to final summary
 ## Repository Structure
 - `data/` – Contains sample log files
 - `src/` – Core system modules (log reader, parser, detector, alert)
@@ -98,4 +99,5 @@ Includes:
 - results.png (visualization)
 - sample.pcap (network capture)
 - summary.json (final output + metrics)
+- sample.pcap (Network capture processed by the pipeline — packet count included in summary.json output)
 

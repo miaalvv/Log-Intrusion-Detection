@@ -3,6 +3,7 @@ from parser import parse_logs
 from detector import detect_suspicious_activity
 from alert import generate_alerts
 from summarizer import save_summary
+from pcap_reader import summarize_pcap
 
 def evaluate(detected_users, ground_truth):
     true_positives = len(set(detected_users) & set(ground_truth))
@@ -68,6 +69,11 @@ def main():
         "metrics": metrics,
         "total_logs_processed": len(logs)
     }
+
+    print("[INFO] Loading network capture for analysis...")
+    pcap_summary = summarize_pcap("artifacts/release/sample.pcap")
+    summary["pcap"] = pcap_summary  
+
     print("[INFO] Saving final summary JSON")
     save_summary(summary)
 

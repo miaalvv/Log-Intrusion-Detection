@@ -16,6 +16,8 @@
   path, negative, and edge cases
 - CI pipeline — GitHub Actions builds the project, runs all tests, and reports
   coverage on every push
+- Network capture analysis — sample.pcap is loaded and processed by the pipeline,
+  with total packet count exported to summary.json
 
 ## What's Next
 - Time-based detection windows — currently all failed logins are counted globally;

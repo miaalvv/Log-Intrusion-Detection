@@ -9,5 +9,8 @@
         "detection_rate": 1.0,
         "false_positive_rate": 0.0
     },
-    "total_logs_processed": 7
+    "total_logs_processed": 7,
+    "pcap": {
+        "total_packets": 12
+    }
 }
