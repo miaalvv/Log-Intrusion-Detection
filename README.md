@@ -95,3 +95,49 @@ This demonstrates correct threshold-based detection.
 - Time-based detection windows  
 - Real-time monitoring  
 - Dashboard visualization  
+
+
+## Runbook
+
+1. Clone the repository  
+2. Run: make demo  
+3. The system will:
+   - Parse logs
+   - Detect suspicious activity
+   - Generate alerts
+   - Output results to artifacts/release/
+
+All outputs are saved automatically.
+
+## Security Invariants
+
+- Log entries are validated before processing
+- Invalid or malformed logs are ignored
+- No sensitive plaintext data is stored
+- Detection thresholds prevent brute-force login attempts
+
+## Evaluation
+
+The system evaluates performance using:
+
+- Detection Rate: measures how many attacks were correctly identified
+- False Positive Rate: measures incorrect alerts
+
+Results are exported in summary.json.
+
+Example:
+- Detection Rate: 1.0
+- False Positive Rate: 0.0
+
+## Evidence Artifacts
+
+All artifacts are stored in:
+
+artifacts/release/
+
+Includes:
+- logs.txt (input logs)
+- results.csv (processed data)
+- results.png (visualization)
+- sample.pcap (network capture)
+- summary.json (final output + metrics)
