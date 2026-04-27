@@ -8,3 +8,7 @@ def test_empty_user_filtered():
     logs = parse_logs("data/logs.txt")
     for log in logs:
         assert log["user"].strip() != ""
+
+
+def test_basic():
+    assert 1 == 1
