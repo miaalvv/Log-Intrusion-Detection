@@ -2,7 +2,7 @@ up:
 	docker-compose build
 
 demo:
-	rm -f artifacts/release/results.csv artifacts/release/summary.json
+	python -c "import os; [os.remove(f) for f in ['artifacts/release/results.csv','artifacts/release/summary.json'] if os.path.exists(f)]"
 	docker-compose up --build --abort-on-container-exit
 
 down:
