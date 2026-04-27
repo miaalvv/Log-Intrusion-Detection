@@ -1,9 +1,9 @@
 # Log-Intrusion-Detection
 
 ## Documentation
-- [Runbook](docs/RUNBOOK.md)
-- [Security Invariants](docs/SECURITY.md)
-- [What Works / What's Next](docs/WHAT_WORKS.md)
+- [Runbook](docs/Runbook.md)
+- [Security Invariants](docs/Security.md)
+- [What Works / What's Next](docs/What_Works_Next.md)
 
 ## Project Overview
 This project is a log-based intrusion detection system that analyzes system logs to detect suspicious activity, such as repeated failed login attempts or unusual user behavior. The goal is to identify potential security threats early and provide alerts for further investigation.
