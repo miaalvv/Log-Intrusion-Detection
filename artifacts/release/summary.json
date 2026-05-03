@@ -3,13 +3,21 @@
         {
             "user": "user2",
             "failed_attempts": 5
+        },
+        {
+            "user": "user5",
+            "failed_attempts": 8
+        },
+        {
+            "user": "user9",
+            "failed_attempts": 5
         }
     ],
     "metrics": {
         "detection_rate": 1.0,
         "false_positive_rate": 0.0
     },
-    "total_logs_processed": 7,
+    "total_logs_processed": 29,
     "pcap": {
         "total_packets": 12
     }

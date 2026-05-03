@@ -20,40 +20,52 @@ def evaluate(detected_users, ground_truth):
 
 def count_failures(logs):
     fail_counts = {}
-
     for log in logs:
         user = log["user"]
-        status = log["action"]
-
         if user not in fail_counts:
             fail_counts[user] = 0
-
-        if status == "LOGIN_FAILED":
+        if log["action"] == "LOGIN_FAILED":
             fail_counts[user] += 1
-
     return fail_counts
 
 def save_csv_summary(user_fail_counts):
     with open("artifacts/release/results.csv", "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["user", "failed_attempts", "flagged"])
-
+        writer.writerow(["user", "failed_attempts", "flagged", "status", "summary"])
         for user, count in user_fail_counts.items():
             flagged = count >= 5
-            writer.writerow([user, count, flagged])
+            status = "SUSPICIOUS" if flagged else "CLEAN"
+            if flagged:
+                summary = f"{user} tried logging in {count} times and failed — flagged as suspicious"
+            elif count > 0:
+                summary = f"{user} had {count} failed attempt(s) — below threshold, no alert"
+            else:
+                summary = f"{user} logged in successfully with no failures"
+            writer.writerow([user, count, flagged, status, summary])
 
 def main():
     print("[INFO] Loading logs from file & starting log analysis...")
     logs = parse_logs("data/logs.txt")
     print(f"[INFO] Counting failed login attempts... Parsed {len(logs)} log entries")
 
-    fail_counts = count_failures(logs) 
-    ground_truth = ["user2"]
+    fail_counts = count_failures(logs)
+    ground_truth = ["user2", "user5", "user9"]
     print("[INFO] Running detection engine")
 
     suspicious_users = detect_suspicious_activity(logs)
     detected_users = [user["user"] for user in suspicious_users]
     metrics = evaluate(detected_users, ground_truth)
+
+    print("[INFO] --- User Status Report ---")
+    for user, count in fail_counts.items():
+        if count >= 5:
+            print(f"[ALERT] {user}: SUSPICIOUS — tried to log in {count} time(s) and failed every time")
+        elif count > 0:
+            print(f"[INFO]  {user}: WARNING — {count} failed attempt(s), below threshold, no alert")
+        else:
+            print(f"[INFO]  {user}: CLEAN — logged in successfully with no failures")
+    print("[INFO] --- End of Report ---")
+
     print(f"[INFO] Metrics: {metrics}")
     print("[INFO] Saving CSV summary")
     save_csv_summary(fail_counts)
@@ -72,7 +84,7 @@ def main():
 
     print("[INFO] Loading network capture for analysis...")
     pcap_summary = summarize_pcap("artifacts/release/sample.pcap")
-    summary["pcap"] = pcap_summary  
+    summary["pcap"] = pcap_summary
 
     print("[INFO] Saving final summary JSON")
     save_summary(summary)
