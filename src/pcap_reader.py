@@ -1,3 +1,4 @@
+#Uses the scapy library to read sample.pcap
 from scapy.all import rdpcap
 
 def summarize_pcap(path):

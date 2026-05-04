@@ -1,3 +1,4 @@
+#It takes the parsed logs, counts LOGIN_FAILED events per user using a dictionary, and returns anyone who hits the threshold
 from collections import defaultdict
 
 def detect_suspicious_activity(logs, threshold=5):

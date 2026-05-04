@@ -1,3 +1,4 @@
+#It takes the suspicious users found by the detector and prints the [ALERT] messages to the terminal. 
 def generate_alerts(suspicious_users):
     alerts = []
 

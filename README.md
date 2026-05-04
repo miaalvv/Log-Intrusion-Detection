@@ -1,6 +1,7 @@
 # Log-Intrusion-Detection
 
 ## Documentation
+- [Download Final Report](./docs/Final_Report.pdf)
 - [Runbook](docs/Runbook.md)
 - [Security Invariants](docs/Security.md)
 - [What Works / What's Next](docs/What_Works_Next.md)

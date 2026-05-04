@@ -1,3 +1,4 @@
+#reads log.txt, parses it, and returns a list of log entries as dictionaries with keys: timestamp, user, action
 def parse_logs(file_path):
     logs = []
 

@@ -1,3 +1,7 @@
+#Runs evaluate() to calculate detection rate and false positive rate
+#Calls count_failures() to build the per-user breakdown
+#Generates results.csv with the enriched status and summary columns
+#Prints the User Status Report to the terminal
 import csv
 from parser import parse_logs
 from detector import detect_suspicious_activity

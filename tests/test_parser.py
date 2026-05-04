@@ -1,3 +1,4 @@
+#tests that the parser reads valid logs correctly and filters empty users
 from src.parser import parse_logs
 
 def test_invalid_log_line():

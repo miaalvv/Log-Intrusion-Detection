@@ -1,3 +1,4 @@
+#tests empty input and invalid actions
 def test_empty_input():
     from src.detector import detect_suspicious_activity
     result = detect_suspicious_activity([])

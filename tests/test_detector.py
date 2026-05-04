@@ -1,3 +1,4 @@
+#tests that the detector correctly flags users at threshold, ignores users below it, and handles edge cases like empty input
 from src.detector import detect_suspicious_activity
 
 def test_no_suspicious_activity():

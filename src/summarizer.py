@@ -1,3 +1,4 @@
+#Saves the final results to artifacts/release/summary.json
 import json
 import os
 
